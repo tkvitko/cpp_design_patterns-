@@ -15,7 +15,7 @@
 
 class Link : public DecoratedText {
 public:
-    explicit Link(Text* text);
+    explicit Link(std::shared_ptr<Text>  text);
     void render(const std::string url, const std::string& data) const;
 };
 

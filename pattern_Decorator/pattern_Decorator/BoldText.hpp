@@ -16,7 +16,7 @@
 
 class BoldText : public DecoratedText {
 public:
-    explicit BoldText(Text* text);
+    explicit BoldText(std::shared_ptr<Text> text);
     void render(const std::string& data) const;
 };
 

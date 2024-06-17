@@ -15,7 +15,7 @@
 
 class Paragraph : public DecoratedText {
 public:
-    explicit Paragraph(Text* text);
+    explicit Paragraph(std::shared_ptr<Text> text);
     void render(const std::string& data) const;
 };
 

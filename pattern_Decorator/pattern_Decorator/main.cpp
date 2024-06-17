@@ -22,16 +22,15 @@ int main() {
 //    auto text_block = new ItalicText(new BoldText(new Text()));
 //    text_block->render("Hello world");
     
-    std::unique_ptr<Text> text = std::make_unique<Text>();
-    std::unique_ptr<Paragraph> text_block = std::make_unique<Paragraph>(text); // No matching constructor for initialization of 'Paragraph'
+    std::shared_ptr<Paragraph> text_block = std::make_shared<Paragraph>(std::make_shared<Text>());
     text_block->render("Hello world");
     std::cout << std::endl;
     
-    auto text_block1 = new Reversed(new Text());
+    std::shared_ptr<Reversed> text_block1 = std::make_shared<Reversed>(std::make_shared<Text>());
     text_block1->render("Hello world");
     std::cout << std::endl;
-    
-    auto text_block2 = new Link(new Text());
+
+    std::shared_ptr<Link> text_block2 = std::make_shared<Link>(std::make_shared<Text>());
     text_block2->render("netology.ru", "Hello world");
     std::cout << std::endl;
 }

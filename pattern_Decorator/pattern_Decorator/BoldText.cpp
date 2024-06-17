@@ -7,7 +7,7 @@
 
 #include "BoldText.hpp"
 
-BoldText::BoldText(Text* text) : DecoratedText(text) {}
+BoldText::BoldText(std::shared_ptr<Text> text) : DecoratedText(text) {}
 
 void BoldText::render(const std::string& data) const {
     std::cout << "<b>" << std::endl;

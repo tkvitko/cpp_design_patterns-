@@ -7,7 +7,7 @@
 
 #include "ItalicText.hpp"
 
-ItalicText::ItalicText(Text* text) : DecoratedText(text) {};
+ItalicText::ItalicText(std::shared_ptr<Text> text) : DecoratedText(text) {};
 
 void ItalicText::render(const std::string& data) const  {
     std::cout << "<i>" << std::endl;

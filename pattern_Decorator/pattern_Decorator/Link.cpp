@@ -7,7 +7,7 @@
 
 #include "Link.hpp"
 
-Link::Link(Text* text) : DecoratedText(text) {}
+Link::Link(std::shared_ptr<Text>  text) : DecoratedText(text) {}
 
 void Link::render(const std::string url, const std::string& data) const {
     std::cout << "<a href=\"";

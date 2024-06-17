@@ -16,7 +16,7 @@
 
 class ItalicText : public DecoratedText {
 public:
-    explicit ItalicText(Text* text);
+    explicit ItalicText(std::shared_ptr<Text> text);
     void render(const std::string& data) const;
 };
 

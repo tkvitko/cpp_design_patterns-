@@ -16,8 +16,8 @@
 
 class DecoratedText : public Text {
 public:
-    explicit DecoratedText(Text* text);
-    Text* text_;
+    explicit DecoratedText(std::shared_ptr<Text> text);
+    std::shared_ptr<Text>  text_;
 };
 
 #endif /* DecoratedText_hpp */

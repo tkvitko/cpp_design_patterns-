@@ -7,7 +7,7 @@
 
 #include "Paragraph.hpp"
 
-Paragraph::Paragraph(Text* text) : DecoratedText(text) {}
+Paragraph::Paragraph(std::shared_ptr<Text> text) : DecoratedText(text) {}
 
 void Paragraph::render(const std::string& data) const {
     std::cout << "<p>" << std::endl;

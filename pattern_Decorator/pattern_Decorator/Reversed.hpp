@@ -15,7 +15,7 @@
 
 class Reversed : public DecoratedText {
 public:
-    explicit Reversed(Text* text);
+    explicit Reversed(std::shared_ptr<Text>  text);
     void render(const std::string& data) const;
 };
 

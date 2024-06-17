@@ -7,4 +7,4 @@
 
 #include "DecoratedText.hpp"
 
-DecoratedText::DecoratedText(Text* text) : text_(text) {}
+DecoratedText::DecoratedText(std::shared_ptr<Text>  text) : text_(text) {}

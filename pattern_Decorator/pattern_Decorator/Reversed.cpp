@@ -7,7 +7,7 @@
 
 #include "Reversed.hpp"
 
-Reversed::Reversed(Text* text) : DecoratedText(text) {}
+Reversed::Reversed(std::shared_ptr<Text>  text) : DecoratedText(text) {}
 
 void Reversed::render(const std::string& data) const {
     std::string reversed = data;
