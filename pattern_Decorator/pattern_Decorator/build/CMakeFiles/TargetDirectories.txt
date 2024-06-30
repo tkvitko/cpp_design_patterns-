@@ -1,3 +1,0 @@
-/Users/tkvitko/c/netology/cpp_design_patterns/pattern_Decorator/pattern_Decorator/build/CMakeFiles/decorator.dir
-/Users/tkvitko/c/netology/cpp_design_patterns/pattern_Decorator/pattern_Decorator/build/CMakeFiles/edit_cache.dir
-/Users/tkvitko/c/netology/cpp_design_patterns/pattern_Decorator/pattern_Decorator/build/CMakeFiles/rebuild_cache.dir
