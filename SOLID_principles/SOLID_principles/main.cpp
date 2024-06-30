@@ -21,6 +21,7 @@ protected:
 
 class HtmlData : public Data {
 public:
+    HtmlData(std::string text) : Data(text) {};
     std::string getData() override {
         return "<html>" + text_ + "<html/>";
     }
@@ -28,6 +29,7 @@ public:
 
 class JsonData : public Data {
 public:
+    JsonData(std::string text) : Data(text) {};
     std::string getData() override {
         return "{ \"data\": \"" + text_ + "\"}";
     }
@@ -35,6 +37,7 @@ public:
 
 class TextData : public Data {
 public:
+    TextData(std::string text) : Data(text) {};
     std::string getData() override {
         return text_;
     }
@@ -49,3 +52,11 @@ public:
 private:
     Data* data_;
 };
+
+int main() {
+    JsonData my_json = JsonData("test");
+    FileSaver saver = FileSaver(&my_json);
+    std::ofstream file("file.txt");
+    saver.sendDataToStream(file);
+}
+
