@@ -12,9 +12,9 @@
 class Observer{
     // абстрактный класс-наблюдатель
 public:
-    virtual void onWarning(const std::string& message) {}
-    virtual void onError(const std::string& message) {}
-    virtual void onFatalError(const std::string& message) {}
+    virtual void onWarning(const std::string& message) = 0;
+    virtual void onError(const std::string& message) = 0;
+    virtual void onFatalError(const std::string& message) = 0;
     
 protected:
     // методы для работы потомков класса
@@ -36,20 +36,26 @@ public:
     void onWarning(const std::string& message) {
         consolePrint(message);
     }
+    void onError(const std::string& message) {}
+    void onFatalError(const std::string& message){}
 };
 
 class ErrorsObserver : public Observer {
     // обработчик ошибок
 public:
-    void onWarning(const std::string& message) {
+    void onWarning(const std::string& message) {}
+    void onError(const std::string& message) {
         filePrint(message);
     }
+    void onFatalError(const std::string& message){}
 };
 
 class FatalErrorsObserver : public Observer {
     // обработчик фатальных ошибок
 public:
-    void onWarning(const std::string& message) {
+    void onWarning(const std::string& message) {}
+    void onError(const std::string& message) {}
+    void onFatalError(const std::string& message) {
         consolePrint(message);
         filePrint(message);
     }
@@ -64,7 +70,6 @@ public:
             if (auto strong_ptr = observer.lock()) {
                 strong_ptr->onWarning(message);
             }
-//            observer->onWarning(message);
         }
     }
     
@@ -87,13 +92,11 @@ public:
     }
     
     void addObserver(std::weak_ptr<Observer> observer) {
-//    void addObserver(Observer* observer) {
         observers_.push_back(observer);
     }
     
 private:
     std::vector<std::weak_ptr<Observer>> observers_;
-//    std::vector<Observer*> observers_;
 };
 
 
@@ -101,14 +104,8 @@ int main(int argc, const char * argv[]) {
     
     // тестирование
     MessageGenerator generator = MessageGenerator();
-    
-    WarningsObserver warning_processor = WarningsObserver();
-    std::weak_ptr<Observer> obs_weak;
-    auto obs_shared = std::make_shared<Observer>(warning_processor);
-    obs_weak = obs_shared;
-    generator.addObserver(obs_weak);
-//    generator.addObserver(&warning_processor);
-    
+    auto obs = std::make_shared<WarningsObserver>();
+    generator.addObserver(obs);
     generator.warning("warning here!");
     return 0;
 }

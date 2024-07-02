@@ -75,7 +75,7 @@ public:
         if (!next_) {
             throw(std::runtime_error("Error: no handler for this message was found!"));
         }
-        next_->handleMessage(msg);
+        next_->receiveMessage(msg);
     }
     
 private:
